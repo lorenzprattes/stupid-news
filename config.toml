@@ -1,0 +1,23 @@
+[app]
+name = "stupid-news-backend"
+version = "1.0.0"
+environment = "development"
+
+[server]
+host = "localhost"
+port = 8080
+
+[database]
+host = "localhost"
+port = 5432
+name = "stupid-db"
+user = "stupid-db-user"
+password = "stupid-db-password"
+
+[logging]
+level = "info"
+file = "app.log"
+
+[security]
+jwt_secret = "your-secret-key"
+session_timeout = 3600

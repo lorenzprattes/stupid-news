@@ -1,22 +1,42 @@
 {
-  "name": "Node.js React Dev Container",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "name": "Go & PostgreSQL Dev Container",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8080, 5432],
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+      "extensions": [
+        "golang.go",
+        "ms-vscode.vscode-json"
+      ]
+    }
+  },
+  "postCreateCommand": "go mod download && sudo chown -R vscode:vscode /workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "installYarnUsingApt": true,
+      "version": "lts",
+      "pnpmVersion": "latest",
+      "nvmVersion": "latest"
     },
-    "settings": {
-      "terminal.integrated.shell.linux": "/bin/zsh"
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
     }
   },
   "mounts": [
-    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind",
-    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind",
-    "source=${localEnv:HOME}/.zshrc,target=/root/.zshrc,type=bind",
-    "source=${localEnv:HOME}/.zshrc.local,target=/root/.zshrc.local,type=bind"
-  ],
-  "forwardPorts": [3000],
-  "remoteUser": "root"
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind",
+    "source=${localEnv:HOME}/.zshrc,target=/home/vscode/.zshrc,type=bind",
+    "source=${localEnv:HOME}/.zshrc.local,target=/home/vscode/.zshrc.local,type=bind"
+  ]
 }
