@@ -11,7 +11,7 @@ import (
 
 func ConnectionString(c *config.DatabaseConfig) string {
 	return fmt.Sprintf(
-		"host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+		"host=%s port=%d user=%s password=%s dbname=%s sslmode=%s",
 		c.Host, c.Port, c.User, c.Password, c.Name, c.SSLMode,
 	)
 }
