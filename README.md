@@ -1,5 +1,4 @@
 stupid-news is a costumizable version of the [brutalist report](https://brutalist.report/about).
-Its mostly intended as a learning project for me, but I also use it "productively" on [news.lorenzprattes.com](http://news.lorenzprattes.com).
 
 # Configuring
 Simply edit the FeedURLs in the config.yaml to change the default feed list
